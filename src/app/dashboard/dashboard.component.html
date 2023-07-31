@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <mat-button-toggle-group name="nav" aria-label="navigation">
+
+    <mat-button-toggle routerLink="" class="link" value="home">Home</mat-button-toggle>
+    <mat-button-toggle routerLink="/userdashboard" class="link" value="user">User</mat-button-toggle>
+    <mat-button-toggle routerLink="/Doner" class="link" value="doner">Doner</mat-button-toggle>
+
+    <button mat-button [matMenuTriggerFor]="beforeMenu" class="logout">{{ this.name }}!</button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+      <button mat-menu-item routerLink="/">Sign Out</button>
+    </mat-menu>
+
+  </mat-button-toggle-group>
+
+  <mat-divider></mat-divider>
+
+  <mat-button-toggle-group #group="matButtonToggleGroup">
+
+    <mat-button-toggle value="order" color="warn">
+      <mat-icon color="primary">create</mat-icon> Create A Donation
+    </mat-button-toggle>
+    <mat-button-toggle value="claim" color="primary" (click)="getTicket(code)">
+      <mat-icon color="primary">add</mat-icon> Claim A Donation
+    </mat-button-toggle>
+    <mat-button-toggle *ngIf="isAdmin" value="view" color="primary" routerLink="/viewticket">
+      <mat-icon color="primary">pageview</mat-icon> View Raised Donations
+    </mat-button-toggle>
+
+  </mat-button-toggle-group>
+
+  <h1 class="username">Welcome {{ this.name }}!</h1>
+
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>All Donations</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h2>{{ this.dataticket.length }}</h2>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Open Donations</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h2>{{ this.open }}</h2>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Closed Claims</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h2>{{ this.close }}</h2>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div class="container">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Ahtesham" #input>
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let row"> {{ row.id }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
+          <td mat-cell *matCellDef="let row"> {{ row.name }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell *matCellDef="let row"> {{ row.email }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+          <td mat-cell *matCellDef="let row">{{ row.isactive ? 'Closed':'Open' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Role</th>
+          <td mat-cell *matCellDef="let row"> {{ row.role === '' ? 'Un Assigned' : row.role }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row">
+            <button *ngIf="row.role !== 'admin'" (click)="updateUser(row.id)" mat-raised-button color="primary">
+              View <mat-icon>visibility</mat-icon>
+            </button>
+            <button *ngIf="isuser" (click)="showcomment(row.id)" mat-raised-button color="primary">
+              Comment <mat-icon>chat</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{ input.value }}"</td>
+        </tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+  </div>
+
+</body>
+
+</html>

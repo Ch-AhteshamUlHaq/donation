@@ -1,0 +1,376 @@
+// Import Angular Material styles and theming
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "@angular/material/theming";
+
+// Include Material core styles
+@include mat-core();
+
+// Define theme colors
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-amber);
+$warn: mat-palette($mat-red);
+$pink: mat-palette($mat-pink);
+$purple: mat-palette($mat-purple);
+$deep-purple: mat-palette($mat-deep-purple);
+$light-blue: mat-palette($mat-light-blue);
+$cyan: mat-palette($mat-cyan);
+$teal: mat-palette($mat-teal);
+$green: mat-palette($mat-green);
+$light-green: mat-palette($mat-light-green);
+$lime: mat-palette($mat-lime);
+$yellow: mat-palette($mat-yellow);
+$amber: mat-palette($mat-amber);
+$orange: mat-palette($mat-orange);
+$grey: mat-palette($mat-grey);
+$blue-grey: mat-palette($mat-blue-grey);
+$black: mat-palette($mat-grey, 900);
+$white: mat-palette($mat-grey, 50);
+$brown: mat-palette($mat-brown);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  overflow-y: auto;
+  max-height: 50rem;
+}
+
+.avatar-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  cursor: pointer;
+
+  img.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    mat-icon {
+      color: mat-color($white);
+      font-size: 24px;
+    }
+
+    span {
+      color: mat-color($white);
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  }
+
+  &:hover .overlay {
+    opacity: 1;
+  }
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+
+}
+
+mat-card-content {
+ 
+  // display: flex;
+  // flex-direction: column;
+
+}
+
+.form-section {
+
+  // display: flex;
+  // flex-direction: column;
+  margin-bottom: 20px; 
+}
+
+mat-form-field {
+ 
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+// mat-label {
+
+// }
+
+mat-card-actions {
+
+  // display: flex;
+  // justify-content: flex-end;
+  margin-top: 20px;
+}
+
+// layout for small screens
+@media screen and (max-width: 600px) {
+  .form-section {
+ 
+  }
+
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // Mat Card Styling
+// mat-card.claimForm {
+//   max-width: 600px;
+//   margin: 20px auto;
+//   border: 1px solid mat-color($grey);
+//   border-radius: 5px;
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+// }
+
+// mat-card-header {
+//   text-align: center;
+//   margin-bottom: 20px;
+// }
+
+// mat-card-title {
+//   font-size: 24px;
+//   font-weight: bold;
+//   margin-bottom: 10px;
+// }
+
+// mat-card-subtitle {
+//   font-size: 16px;
+//   font-weight: bold;
+//   margin-bottom: 10px;
+// }
+
+// // Avatar Styling
+// .avatar-container {
+//   position: relative;
+//   width: 100px;
+//   height: 100px;
+//   border-radius: 50%;
+//   overflow: hidden;
+//   margin: 0 auto 20px;
+//   cursor: pointer;
+
+//   img.avatar {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//   }
+
+//   .overlay {
+//     position: absolute;
+//     bottom: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 30%;
+//     background: rgba(0, 0, 0, 0.7);
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//     opacity: 0;
+//     transition: opacity 0.3s ease;
+
+//     mat-icon {
+//       color: mat-color($white);
+//       font-size: 24px;
+//     }
+
+//     span {
+//       color: mat-color($white);
+//       font-size: 14px;
+//       margin-top: 5px;
+//     }
+//   }
+
+//   &:hover .overlay {
+//     opacity: 1;
+//   }
+// }
+
+// // Form Field Styling
+// form.claimForm {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+// mat-form-field {
+//   width: 100%;
+//   margin-bottom: 10px;
+
+//   &.religion,
+//   &.dateOfBirth,
+//   &.residentialAddress,
+//   &.fatherName,
+//   &.fatherContact,
+//   &.fatherCnic,
+//   &.fatherJob,
+//   &.fatherIncome,
+//   &.sourcesOfIncome,
+//   &.allIncomes,
+//   &.candidateClass,
+//   &.candidateInstitute,
+//   &.monthlyFee,
+//   &.otherExpenses,
+//   &.referencePart1,
+//   &.referencePart2,
+//   &.admissionForm,
+//   &.voucher,
+//   &.verifyInstitute {
+//     width: 100%;
+//   }
+
+//   &.dateOfBirth,
+//   &.dateOfSubmission,
+//   &.dateOfApproval {
+//     width: 50%;
+//   }
+// }
+
+// // Certification Card Styling
+// .certification-card {
+//   margin-top: 20px;
+//   padding: 10px;
+//   border: 1px solid #ccc;
+
+//   .mat-card-title {
+//     font-size: 18px;
+//     font-weight: bold;
+//     margin-bottom: 10px;
+//   }
+
+//   mat-card-content {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//   }
+
+//   .mat-card-footer {
+//     display: flex;
+//     justify-content: flex-end;
+//     margin-top: 10px;
+//   }
+
+//   .mat-form-field {
+//     width: 100%;
+
+//     .mat-checkbox {
+//       .mat-checkbox-inner-container {
+//         color: aquamarine;
+//       }
+//     }
+//   }
+// }
+
+// // Reference Part Styling
+// .mat-card.referencePart1,
+// .mat-card.referencePart2 {
+//   margin-top: 20px;
+//   padding: 10px;
+//   border: 1px solid #ccc;
+
+//   .mat-card-title {
+//     font-size: 18px;
+//     font-weight: bold;
+//   }
+
+//   .mat-card-content {
+//     font-size: 14px;
+//     line-height: 1.5;
+//   }
+
+//   .mat-form-field {
+//     width: 100%;
+//   }
+// }
+
+// // Mat Card Actions Styling
+// mat-card-actions {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center; /* Add this line to align items vertically */
+//   margin-top: 20px;
+//   margin-bottom: 20px; /* Reduce the margin-bottom to 20px */
+// }
+
+
+// // Media Queries for Responsiveness
+// @media screen and (max-width: 600px) {
+//   mat-card.claimForm {
+//     max-width: 90%;
+//   }
+
+//   .avatar-container {
+//     width: 80px;
+//     height: 80px;
+//   }
+
+//   mat-card-title {
+//     font-size: 20px;
+//   }
+
+//   mat-card-subtitle {
+//     font-size: 14px;
+//   }
+
+//   mat-form-field.dateOfBirth,
+//   mat-form-field.dateOfSubmission,
+//   mat-form-field.dateOfApproval {
+//     width: 100%;
+//   }
+// }
+
+// @media screen and (max-width: 400px) {
+//   mat-card.claimForm {
+//     max-width: 95%;
+//   }
+
+//   .avatar-container {
+//     width: 60px;
+//     height: 60px;
+//   }
+
+//   mat-card-title {
+//     font-size: 18px;
+//   }
+
+//   mat-card-subtitle {
+//     font-size: 12px;
+//   }
+// }

@@ -1,0 +1,136 @@
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "@angular/material/theming";
+
+// Define your custom theme variables here
+
+// Base theme configuration
+@include mat-core();
+
+// Customize the theme with your variables
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-amber);
+$warn: mat-palette($mat-red);
+$pink: mat-palette($mat-pink);
+$purple: mat-palette($mat-purple);
+$deep-purple: mat-palette($mat-deep-purple);
+$light-blue: mat-palette($mat-light-blue);
+$cyan: mat-palette($mat-cyan);
+$teal: mat-palette($mat-teal);
+$green: mat-palette($mat-green);
+$light-green: mat-palette($mat-light-green);
+$lime: mat-palette($mat-lime);
+$yellow: mat-palette($mat-yellow);
+$amber: mat-palette($mat-amber);
+$orange: mat-palette($mat-orange);
+$grey: mat-palette($mat-grey);
+$blue-grey: mat-palette($mat-blue-grey);
+$black: mat-palette($mat-grey, 900);
+$white: mat-palette($mat-grey, 50);
+$brown: mat-palette($mat-brown);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+// Global Styles
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+mat-card {
+  margin: 2% auto;
+  max-width: 400px;
+  padding: 20px;
+  background-color: mat-color($light-green);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 3%;
+
+  &-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0;
+      color: mat-color($black);
+    }
+
+    mat-card-subtitle {
+      font-size: 14px;
+      color: mat-color($primary);
+    }
+  }
+
+  &-content {
+    padding: 20px;
+    background-color: mat-color($white);
+    border-radius: 3%;
+
+    form.example-form {
+      margin-bottom: 20px;
+
+      mat-form-field.example-full-width {
+        width: 100%;
+        margin-bottom: 20px;
+
+        mat-label {
+          color: mat-color($primary);
+        }
+
+        input,
+        textarea {
+          color: mat-color($primary);
+
+          &::placeholder {
+            color: mat-color($primary, text-disabled);
+          }
+        }
+
+        mat-icon {
+          color: mat-color($primary);
+          cursor: pointer;
+        }
+
+        mat-error {
+          color: mat-color($warn);
+        }
+      }
+
+      mat-radio-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+
+        mat-radio-button {
+          color: mat-color($primary);
+        }
+      }
+    }
+  }
+
+  &-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      color: mat-color($primary);
+      border-color: mat-color($primary);
+      background-color: transparent;
+
+      &:hover {
+        background-color: mat-color($primary);
+        color: mat-color($white);
+      }
+    }
+
+    a {
+      color: mat-color($white);
+    }
+  }
+}

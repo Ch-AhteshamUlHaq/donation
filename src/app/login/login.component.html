@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <mat-card>
+
+    <mat-card-header>
+      <h2>
+        User Login
+      </h2>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <form class="example-form" [formGroup]="loginForm" (ngSubmit)="proceedLogin()">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>User Name</mat-label>
+          <input matInput formControlName="id">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label color="primary">Password</mat-label>
+          <input matInput type="password" [type]="showPassword ? 'text' : 'password'" formControlName="pass">
+          <mat-icon matSuffix (click)="togglePasswordVisibility()">
+            {{showPassword?'visibility_off':'visibility'}}
+          </mat-icon>
+        </mat-form-field>
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary">Login</button>
+          <button routerLink="/register" mat-raised-button color="accent">New User?</button>
+        </mat-card-actions>
+
+      </form>
+
+    </mat-card-content>
+
+  </mat-card>
+
+</body>
+
+</html>

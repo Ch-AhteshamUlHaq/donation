@@ -1,0 +1,18 @@
+{
+  "user": [
+    {
+      "id": "Shami",
+      "name": "Ahtesham",
+      "password": "Pakistan",
+      "repassword": "Pakistan",
+      "email": "Ch.AhteshamUlHaq@Gmail.com",
+      "gender": "male",
+      "role": "",
+      "isActive": true,
+      "comment": ""
+    }
+  ],
+  "claimer": [
+    {}
+  ]
+}

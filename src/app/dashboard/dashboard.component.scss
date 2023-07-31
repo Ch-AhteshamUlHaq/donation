@@ -1,0 +1,304 @@
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "@angular/material/theming";
+
+@include mat-core();
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-amber);
+$warn: mat-palette($mat-red);
+$pink: mat-palette($mat-pink);
+$purple: mat-palette($mat-purple);
+$deep-purple: mat-palette($mat-deep-purple);
+$light-blue: mat-palette($mat-light-blue);
+$cyan: mat-palette($mat-cyan);
+$teal: mat-palette($mat-teal);
+$green: mat-palette($mat-green);
+$light-green: mat-palette($mat-light-green);
+$lime: mat-palette($mat-lime);
+$yellow: mat-palette($mat-yellow);
+$amber: mat-palette($mat-amber);
+$orange: mat-palette($mat-orange);
+$grey: mat-palette($mat-grey);
+$blue-grey: mat-palette($mat-blue-grey);
+$black: mat-palette($mat-grey, 900);
+$white: mat-palette($mat-grey, 50);
+$brown: mat-palette($mat-brown);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+mat-grid-list {
+  margin: 16px;
+}
+
+mat-card {
+  height: 100%;
+  border-radius: 5%;
+  overflow: hidden;
+  // background-color: mat-color($primary);
+  background-color: transparent;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: mat-color($light-green);
+    color: mat-color($white);
+  }
+}
+
+mat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+mat-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+
+
+// Navigation Bar
+mat-button-toggle-group[name="nav"] {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+.link {
+  color: mat-color($grey);
+  text-decoration: none;
+  margin-right: 16px;
+}
+
+.link:last-child {
+  margin-right: 0;
+}
+
+.mat-button-toggle.mat-button {
+  padding: 0;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.logout {
+  color: mat-color($white);
+  text-decoration: none;
+  float: right;
+}
+
+// Logout Menu
+mat-menu#beforeMenu {
+  background-color: mat-color($white);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(84, 223, 65, 0.2);
+  padding: 8px 0;
+  font-size: 14px;
+  text-align: right;
+}
+
+button.mat-menu-item {
+  padding: 8px 16px;
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  color: mat-color($grey);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+// Divider
+mat-divider {
+  margin: 16px 0;
+  border-color: #47c636;
+}
+
+// Button Toggle Group
+mat-button-toggle-group#group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+mat-button-toggle[value="order"],
+mat-button-toggle[value="claim"],
+mat-button-toggle[value="view"] {
+  margin-right: 16px;
+}
+
+// Button Toggle
+mat-button-toggle .mat-icon {
+  color: mat-color($deep-purple);
+  margin-right: 4px;
+}
+
+// Professional Styles
+mat-button-toggle-group[name="nav"] {
+  background-color: mat-color($green);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+mat-button-toggle-group[name="nav"] mat-button-toggle[value="home"],
+mat-button-toggle-group[name="nav"] mat-button-toggle[value="user"],
+mat-button-toggle-group[name="nav"] mat-button-toggle[value="doner"] {
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  background-color: transparent;
+  color: mat-color($black);
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: mat-color($light-green);
+    color: mat-color($white);
+  }
+}
+
+mat-button-toggle-group#group {
+  color: mat-color($white);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+mat-button-toggle-group#group mat-button-toggle {
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: mat-color($primary);
+    color: mat-color($white);
+  }
+}
+
+
+
+
+h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+button[type="submit"] {
+  color: mat-color($primary);
+}
+
+.username {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.card {
+  width: 200px;
+  height: 160px;
+  margin: 16px;
+}
+
+.container {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-row {
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.mat-row:hover {
+  background-color: mat-color($white);
+}
+
+.mat-cell,
+.mat-header-cell {
+  padding: 8px;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+}
+
+.table-container {
+  overflow-x: auto;
+  max-height: 400px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.ticket {
+  margin-top: 50px;
+  width: 550px;
+}
+
+.open {
+  margin-top: -125px;
+  margin-left: 370px;
+  width: 550px;
+}
+
+.close {
+  margin-top: -130px;
+  margin-left: 700px;
+  width: 550px;
+}
+
+.username {
+  margin-top: 180px;
+}
+
+.viewticket {
+  top: 150px;
+  margin-left: 1200px;
+}
+
+.orderticket {
+  top: 100px;
+  margin-left: 500px;
+}
+
+.raiseticket {
+  top: 100px;
+  margin-right: 500px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  top: -100px;
+}
+
+.mat-paginator {
+  margin-top: 16px;
+}
