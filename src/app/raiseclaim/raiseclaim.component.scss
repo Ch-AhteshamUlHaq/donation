@@ -39,338 +39,181 @@ body {
   max-height: 50rem;
 }
 
-.avatar-container {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto 20px;
-  cursor: pointer;
-
-  img.avatar {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 30%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-
-    mat-icon {
-      color: mat-color($white);
-      font-size: 24px;
-    }
-
-    span {
-      color: mat-color($white);
-      font-size: 14px;
-      margin-top: 5px;
-    }
-  }
-
-  &:hover .overlay {
-    opacity: 1;
-  }
-}
+// Mat-Card Styles
 
 mat-card {
+  width: 100%;
+  max-width: auto;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-
 }
 
-mat-card-content {
- 
-  // display: flex;
-  // flex-direction: column;
-
+mat-card-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: mat-color($black);
 }
 
-.form-section {
-
-  // display: flex;
-  // flex-direction: column;
-  margin-bottom: 20px; 
+mat-card-subtitle {
+  font-size: 16px;
 }
+
+mat-divider {
+  margin: 10px 0;
+}
+
+// Avatar Styles
+
+.avatar-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 7% auto;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.avatar-container:hover .overlay {
+  opacity: 1;
+}
+
+// Form Field Styles
 
 mat-form-field {
- 
   width: 100%;
   margin-bottom: 10px;
 }
 
-// mat-label {
+mat-hint {
+  font-size: 12px;
+}
 
-// }
+// Personal Information Section Styles
 
-mat-card-actions {
+.personal-info-section {
+  display: flex;
+  justify-content: space-between;
+}
 
-  // display: flex;
-  // justify-content: flex-end;
+.religion,
+.dateOfBirth,
+.residentialAddress {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+
+
+// Guardian Information Section Styles
+
+.guardian-info-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.fatherName,
+.fatherContact,
+.fatherCnic,
+.fatherJob,
+.fatherIncome,
+.sourcesOfIncome,
+.allIncomes {
+  grid-column: span 2;
+}
+
+// Institute Information Section Styles
+
+.institute-info-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.candidateClass,
+.candidateInstitute,
+.candyinstituteaddress,
+.candidateClass,
+.candidateInstitute {
+  grid-column: span 2;
+}
+
+// File Upload Section Styles
+
+.file-upload-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.admissionForm,
+.voucher {
+  grid-column: span 2;
+}
+
+.example-section {
+  grid-column: span 2;
+}
+
+// Certification and Acknowledgement Section Styles
+
+.certification-section {
+  margin-top: 20px;
+  p {
+    margin: 10px 0;
+  }
+}
+
+// Reference No. 1 Section Styles
+
+.reference1-section {
+  margin-top: 20px;
+  .ref1 {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+}
+
+// Reference No. 2 Section Styles
+
+.reference2-section {
+  margin-top: 20px;
+  .ref2 {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+}
+
+// Card Actions Styles
+
+.actions-section {
+  display: flex;
+  justify-content: space-between;
   margin-top: 20px;
 }
-
-// layout for small screens
-@media screen and (max-width: 600px) {
-  .form-section {
- 
-  }
-
-  
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Mat Card Styling
-// mat-card.claimForm {
-//   max-width: 600px;
-//   margin: 20px auto;
-//   border: 1px solid mat-color($grey);
-//   border-radius: 5px;
-//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-// }
-
-// mat-card-header {
-//   text-align: center;
-//   margin-bottom: 20px;
-// }
-
-// mat-card-title {
-//   font-size: 24px;
-//   font-weight: bold;
-//   margin-bottom: 10px;
-// }
-
-// mat-card-subtitle {
-//   font-size: 16px;
-//   font-weight: bold;
-//   margin-bottom: 10px;
-// }
-
-// // Avatar Styling
-// .avatar-container {
-//   position: relative;
-//   width: 100px;
-//   height: 100px;
-//   border-radius: 50%;
-//   overflow: hidden;
-//   margin: 0 auto 20px;
-//   cursor: pointer;
-
-//   img.avatar {
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//   }
-
-//   .overlay {
-//     position: absolute;
-//     bottom: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 30%;
-//     background: rgba(0, 0, 0, 0.7);
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     opacity: 0;
-//     transition: opacity 0.3s ease;
-
-//     mat-icon {
-//       color: mat-color($white);
-//       font-size: 24px;
-//     }
-
-//     span {
-//       color: mat-color($white);
-//       font-size: 14px;
-//       margin-top: 5px;
-//     }
-//   }
-
-//   &:hover .overlay {
-//     opacity: 1;
-//   }
-// }
-
-// // Form Field Styling
-// form.claimForm {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// }
-
-// mat-form-field {
-//   width: 100%;
-//   margin-bottom: 10px;
-
-//   &.religion,
-//   &.dateOfBirth,
-//   &.residentialAddress,
-//   &.fatherName,
-//   &.fatherContact,
-//   &.fatherCnic,
-//   &.fatherJob,
-//   &.fatherIncome,
-//   &.sourcesOfIncome,
-//   &.allIncomes,
-//   &.candidateClass,
-//   &.candidateInstitute,
-//   &.monthlyFee,
-//   &.otherExpenses,
-//   &.referencePart1,
-//   &.referencePart2,
-//   &.admissionForm,
-//   &.voucher,
-//   &.verifyInstitute {
-//     width: 100%;
-//   }
-
-//   &.dateOfBirth,
-//   &.dateOfSubmission,
-//   &.dateOfApproval {
-//     width: 50%;
-//   }
-// }
-
-// // Certification Card Styling
-// .certification-card {
-//   margin-top: 20px;
-//   padding: 10px;
-//   border: 1px solid #ccc;
-
-//   .mat-card-title {
-//     font-size: 18px;
-//     font-weight: bold;
-//     margin-bottom: 10px;
-//   }
-
-//   mat-card-content {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//   }
-
-//   .mat-card-footer {
-//     display: flex;
-//     justify-content: flex-end;
-//     margin-top: 10px;
-//   }
-
-//   .mat-form-field {
-//     width: 100%;
-
-//     .mat-checkbox {
-//       .mat-checkbox-inner-container {
-//         color: aquamarine;
-//       }
-//     }
-//   }
-// }
-
-// // Reference Part Styling
-// .mat-card.referencePart1,
-// .mat-card.referencePart2 {
-//   margin-top: 20px;
-//   padding: 10px;
-//   border: 1px solid #ccc;
-
-//   .mat-card-title {
-//     font-size: 18px;
-//     font-weight: bold;
-//   }
-
-//   .mat-card-content {
-//     font-size: 14px;
-//     line-height: 1.5;
-//   }
-
-//   .mat-form-field {
-//     width: 100%;
-//   }
-// }
-
-// // Mat Card Actions Styling
-// mat-card-actions {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center; /* Add this line to align items vertically */
-//   margin-top: 20px;
-//   margin-bottom: 20px; /* Reduce the margin-bottom to 20px */
-// }
-
-
-// // Media Queries for Responsiveness
-// @media screen and (max-width: 600px) {
-//   mat-card.claimForm {
-//     max-width: 90%;
-//   }
-
-//   .avatar-container {
-//     width: 80px;
-//     height: 80px;
-//   }
-
-//   mat-card-title {
-//     font-size: 20px;
-//   }
-
-//   mat-card-subtitle {
-//     font-size: 14px;
-//   }
-
-//   mat-form-field.dateOfBirth,
-//   mat-form-field.dateOfSubmission,
-//   mat-form-field.dateOfApproval {
-//     width: 100%;
-//   }
-// }
-
-// @media screen and (max-width: 400px) {
-//   mat-card.claimForm {
-//     max-width: 95%;
-//   }
-
-//   .avatar-container {
-//     width: 60px;
-//     height: 60px;
-//   }
-
-//   mat-card-title {
-//     font-size: 18px;
-//   }
-
-//   mat-card-subtitle {
-//     font-size: 12px;
-//   }
-// }

@@ -8,278 +8,313 @@
 </head>
 
 <body>
-    <mat-card class="claim-card">
-        <mat-card-header>
-            <mat-card-title>APPLICATION FOR EDUCATIONAL GRANT</mat-card-title>
-            <mat-divider></mat-divider>
-            <mat-card-subtitle>TEHREEK E AJAR E RISALAT, PAKISTAN.</mat-card-subtitle>
-            <mat-card-subtitle>PROJECT: EDUCATION FOR EVERYONE.</mat-card-subtitle>
-        </mat-card-header>
+    <mat-dialog-content>
+        <mat-card class="claim-card">
+            <mat-card-header>
+                <mat-card-title>APPLICATION FOR EDUCATIONAL GRANT</mat-card-title>
+                <mat-divider></mat-divider>
+                <mat-card-subtitle>TEHREEK E AJAR E RISALAT, PAKISTAN.</mat-card-subtitle>
+                <mat-card-subtitle>PROJECT: EDUCATION FOR EVERYONE.</mat-card-subtitle>
+            </mat-card-header>
 
-        <mat-card-content class="claim-content">
-            <form class="claimForm" [formGroup]="claimForm" (ngSubmit)="demandFund()">
-                <!-- Avatar Container -->
-                <div class="avatar-container">
-                    <label for="profile-picture">
-                        <img *ngIf="!profilePicture" src="assets/no-image.png" alt="Avatar" class="avatar" />
-                        <img *ngIf="profilePicture" [src]="profilePicture" alt="Uploaded Avatar" class="avatar" />
-                        <div class="overlay">
-                            <mat-icon>add_photo_alternate</mat-icon>
-                        </div>
-                    </label>
-                    <input type="file" id="profile-picture" formControlName="pImg" (change)="onProfilePictureChange($event)" accept="image/*" style="display: none;" />
-                </div>
+            <mat-card-content class="claim-content">
+                <form class="claimForm" [formGroup]="claimForm" (ngSubmit)="demandFund()">
+                    <!-- Avatar Container -->
+                    <div class="avatar-container">
+                        <label for="profile-picture">
+                            <img *ngIf="!profilePicture" src="assets/no-image.png" alt="Avatar" class="avatar" />
+                            <img *ngIf="profilePicture" [src]="profilePicture" alt="Uploaded Avatar" class="avatar" />
+                            <div class="overlay">
+                                <mat-icon>add_photo_alternate</mat-icon>
+                            </div>
+                        </label>
+                        <input type="file" id="profile-picture" formControlName="pImg"
+                            (change)="onProfilePictureChange($event)" accept="image/*" style="display: none;" />
+                    </div>
 
-                <!-- Personal Information Section -->
-                <div class="personal-info-section">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Candidate Name</mat-label>
-                        <input matInput type="text" formControlName="cName">
-                    </mat-form-field>
+                    <!-- Personal Information Section -->
+                    <div class="personal-info-section">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Candidate Name</mat-label>
+                            <input matInput type="text" formControlName="cName">
+                        </mat-form-field>
 
-                    <mat-form-field appearance="outline">
-                        <mat-label>Caste</mat-label>
-                        <input matInput type="text" formControlName="cCaste">
-                    </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Caste</mat-label>
+                            <input matInput type="text" formControlName="cCaste">
+                        </mat-form-field>
 
-                    <mat-form-field class="religion" appearance="outline">
-                        <mat-label>Religion</mat-label>
-                        <mat-select formControlName="cReligion">
-                            <mat-option value="Muslim">Muslim</mat-option>
-                            <mat-option value="Christian">Christian</mat-option>
-                            <mat-option value="Hindu">Hindu</mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                        <mat-form-field class="religion" appearance="outline">
+                            <mat-label>Religion</mat-label>
+                            <mat-select formControlName="cReligion">
+                                <mat-option value="Muslim">Muslim</mat-option>
+                                <mat-option value="Christian">Christian</mat-option>
+                                <mat-option value="Hindu">Hindu</mat-option>
+                            </mat-select>
+                        </mat-form-field>
 
-                    <mat-form-field appearance="outline">
-                        <mat-label>Sect</mat-label>
-                        <input matInput type="text" formControlName="cSect">
-                    </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Sect</mat-label>
+                            <input matInput type="text" formControlName="cSect">
+                        </mat-form-field>
 
-                    <mat-form-field class="dateOfBirth" appearance="outline">
-                        <mat-label>Date Of Birth</mat-label>
-                        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker"
-                            formControlName="candidateDateOfBirth">
-                        <mat-hint>MM/DD/YYYY</mat-hint>
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
+                        <mat-form-field class="dateOfBirth" appearance="outline">
+                            <mat-label>Date Of Birth</mat-label>
+                            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker"
+                                formControlName="candidateDateOfBirth">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
 
-                    <mat-form-field appearance="outline">
-                        <mat-label>Total Family Members</mat-label>
-                        <input matInput type="number" formControlName="cFamily">
-                    </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Total Family Members</mat-label>
+                            <input matInput type="number" formControlName="cFamily">
+                        </mat-form-field>
 
-                    <mat-form-field appearance="outline">
-                        <mat-label>Brothers</mat-label>
-                        <input matInput type="number" formControlName="cBrothers">
-                    </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Brothers</mat-label>
+                            <input matInput type="number" formControlName="cBrothers">
+                        </mat-form-field>
 
-                    <mat-form-field appearance="outline">
-                        <mat-label>Occupation</mat-label>
-                        <input matInput type="text" formControlName="cBrojob">
-                    </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Occupation</mat-label>
+                            <input matInput type="text" formControlName="cBrojob">
+                        </mat-form-field>
 
-                    <mat-form-field appearance="outline">
-                        <mat-label>Sisters</mat-label>
-                        <input matInput type="number" formControlName="cSisters">
-                    </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Sisters</mat-label>
+                            <input matInput type="number" formControlName="cSisters">
+                        </mat-form-field>
 
-                    <mat-form-field appearance="outline">
-                        <mat-label>Occupation</mat-label>
-                        <input matInput type="text" formControlName="cSisjob">
-                    </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Occupation</mat-label>
+                            <input matInput type="text" formControlName="cSisjob">
+                        </mat-form-field>
 
-                    <mat-form-field class="residentialAddress" appearance="outline">
-                        <mat-label>Residential Address</mat-label>
-                        <textarea matInput type="Address" formControlName="cResadd" placeholder="Ex. 100 Main St"></textarea>
-                    </mat-form-field>
-                </div>
+                        <mat-form-field class="residentialAddress" appearance="outline">
+                            <mat-label>Residential Address</mat-label>
+                            <textarea matInput type="Address" formControlName="cResadd"
+                                placeholder="Ex. 100 Main St"></textarea>
+                        </mat-form-field>
+                    </div>
 
-                <!-- Guardian Information Section -->
-                <div class="guardian-info-section">
-                    <mat-form-field class="fatherName" appearance="outline">
-                        <mat-label>Father/Guardian Name</mat-label>
-                        <input matInput type="text" formControlName="cFname">
-                    </mat-form-field>
+                    <!-- Guardian Information Section -->
+                    <div class="guardian-info-section">
+                        <mat-form-field class="fatherName" appearance="outline">
+                            <mat-label>Father/Guardian Name</mat-label>
+                            <input matInput type="text" formControlName="cFname">
+                        </mat-form-field>
 
-                    <mat-form-field class="fatherContact" appearance="outline">
-                        <mat-label>Father/Guardian Contact</mat-label>
-                        <input matInput type="tel" formControlName="cFcon">
-                    </mat-form-field>
+                        <mat-form-field class="fatherContact" appearance="outline">
+                            <mat-label>Father/Guardian Contact</mat-label>
+                            <input matInput type="tel" formControlName="cFcon">
+                        </mat-form-field>
 
-                    <mat-form-field class="fatherCnic" appearance="outline">
-                        <mat-label>Father/Guardian CNIC #</mat-label>
-                        <input matInput type="number" formControlName="cFcnic">
-                    </mat-form-field>
+                        <mat-form-field class="fatherCnic" appearance="outline">
+                            <mat-label>Father/Guardian CNIC #</mat-label>
+                            <input matInput type="number" formControlName="cFcnic">
+                        </mat-form-field>
 
-                    <mat-form-field class="fatherJob" appearance="outline">
-                        <mat-label>Father/Guardian Occupation</mat-label>
-                        <input matInput type="text" formControlName="cFjob">
-                    </mat-form-field>
+                        <mat-form-field class="fatherJob" appearance="outline">
+                            <mat-label>Father/Guardian Occupation</mat-label>
+                            <input matInput type="text" formControlName="cFjob">
+                        </mat-form-field>
 
-                    <mat-form-field class="fatherIncome" appearance="outline">
-                        <mat-label>Father/Guardian Monthly Income</mat-label>
-                        <input matInput type="number" formControlName="cFincome">
-                    </mat-form-field>
+                        <mat-form-field class="fatherIncome" appearance="outline">
+                            <mat-label>Father/Guardian Monthly Income</mat-label>
+                            <input matInput type="number" formControlName="cFincome">
+                        </mat-form-field>
 
-                    <mat-form-field class="sourcesOfIncome" appearance="outline">
-                        <mat-label>Other Source Of Income</mat-label>
-                        <input matInput type="text" formControlName="oIncome">
-                    </mat-form-field>
+                        <mat-form-field class="sourcesOfIncome" appearance="outline">
+                            <mat-label>Other Source Of Income</mat-label>
+                            <input matInput type="text" formControlName="oIncome">
+                        </mat-form-field>
 
-                    <mat-form-field class="allIncomes" appearance="outline">
-                        <mat-label>Whole Income</mat-label>
-                        <input matInput type="number" formControlName="allIncome">
-                    </mat-form-field>
-                </div>
+                        <mat-form-field class="allIncomes" appearance="outline">
+                            <mat-label>Whole Income</mat-label>
+                            <input matInput type="number" formControlName="allIncome">
+                        </mat-form-field>
+                    </div>
 
-                <!-- Institute Information Section -->
-                <div class="institute-info-section">
-                    <mat-form-field class="candidateClass" appearance="outline">
-                        <mat-label>Candidate's Class/Grade</mat-label>
-                        <input matInput type="text" formControlName="stuGrade">
-                    </mat-form-field>
+                    <!-- Institute Information Section -->
+                    <div class="institute-info-section">
+                        <mat-form-field class="candidateClass" appearance="outline">
+                            <mat-label>Candidate's Class/Grade</mat-label>
+                            <input matInput type="text" formControlName="stuGrade">
+                        </mat-form-field>
 
-                    <mat-form-field class="candidateInstitute" appearance="outline">
-                        <mat-label>Candidate's Institute Name</mat-label>
-                        <input matInput type="text" formControlName="sInstituteName">
-                    </mat-form-field>
+                        <mat-form-field class="candidateInstitute" appearance="outline">
+                            <mat-label>Candidate's Institute Name</mat-label>
+                            <input matInput type="text" formControlName="sInstituteName">
+                        </mat-form-field>
 
-                    <mat-form-field class="candyinstituteaddress" appearance="outline">
-                        <mat-label>Institute Address</mat-label>
-                        <textarea matInput type="Address" formControlName="iAddress" placeholder="Ex. 100 Main St"></textarea>
-                    </mat-form-field>
+                        <mat-form-field class="candyinstituteaddress" appearance="outline">
+                            <mat-label>Institute Address</mat-label>
+                            <textarea matInput type="Address" formControlName="iAddress"
+                                placeholder="Ex. 100 Main St"></textarea>
+                        </mat-form-field>
 
-                    <mat-hint>Information Of Contact Authority At Institute</mat-hint>
+                        <mat-hint>Information Of Contact Authority At Institute</mat-hint>
 
-                    <mat-form-field class="candidateClass" appearance="outline">
-                        <mat-label>Name</mat-label>
-                        <input matInput type="text" formControlName="iAuthorityName">
-                    </mat-form-field>
+                        <mat-form-field class="candidateClass" appearance="outline">
+                            <mat-label>Name</mat-label>
+                            <input matInput type="text" formControlName="iAuthorityName">
+                        </mat-form-field>
 
-                    <mat-form-field class="candidateInstitute" appearance="outline">
-                        <mat-label>Email</mat-label>
-                        <input matInput type="text" formControlName="iAuthorityEmail">
-                    </mat-form-field>
+                        <mat-form-field class="candidateInstitute" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="text" formControlName="iAuthorityEmail">
+                        </mat-form-field>
 
-                    <mat-form-field class="candidateInstitute" appearance="outline">
-                        <mat-label>Contact</mat-label>
-                        <input matInput type="text" formControlName="iAuthorityCon">
-                    </mat-form-field>
-                </div>
+                        <mat-form-field class="candidateInstitute" appearance="outline">
+                            <mat-label>Contact</mat-label>
+                            <input matInput type="text" formControlName="iAuthorityCon">
+                        </mat-form-field>
+                    </div>
 
-                <!-- File Upload Section -->
-                <div class="file-upload-section">
-                    <mat-form-field class="admissionForm" appearance="outline">
-                        <mat-label>Institution Admission Form</mat-label>
-                        <input type="file" hidden #admissionFileInput formControlName="uploadAdmissionnF" (change)="onFileChange($event, 'uploadAdmissionnF')" accept=".pdf">
-                        <input type="text" matInput [value]="admissionFileName || claimForm.get('uploadAdmissionnF')?.value?.name || ''" readonly>
-                        <button mat-icon-button color="primary" (click)="admissionFileInput.click()">
-                            <mat-icon>attach_file</mat-icon>
+                    <!-- File Upload Section -->
+                    <div class="file-upload-section">
+                        <mat-form-field class="admissionForm" appearance="outline">
+                            <mat-label>Institution Admission Form</mat-label>
+                            <input type="file" hidden #admissionFileInput formControlName="uploadAdmissionnF"
+                                (change)="onFileChange($event, 'uploadAdmissionnF')" accept=".pdf">
+                            <input type="text" matInput
+                                [value]="admissionFileName || claimForm.get('uploadAdmissionnF')?.value?.name || ''"
+                                readonly>
+                            <button mat-icon-button color="primary" (click)="admissionFileInput.click()">
+                                <mat-icon>attach_file</mat-icon>
+                            </button>
+                        </mat-form-field>
+
+                        <mat-form-field class="voucher" appearance="outline">
+                            <mat-label>Fee Slip Voucher</mat-label>
+                            <input type="file" hidden #voucherFileInput formControlName="feeSlip"
+                                (change)="onFileChange($event, 'feeSlip')" accept=".pdf">
+                            <input type="text" matInput
+                                [value]="feeSlipFileName || claimForm.get('feeSlip')?.value?.name || ''" readonly>
+                            <button mat-icon-button color="primary" (click)="voucherFileInput.click()">
+                                <mat-icon>attach_file</mat-icon>
+                            </button>
+                        </mat-form-field>
+
+                        <mat-form-field class="monthlyFee" appearance="outline">
+                            <mat-label>Institute Monthly Fee</mat-label>
+                            <input matInput type="number" formControlName="iMonFee">
+                        </mat-form-field>
+
+                        <mat-form-field class="otherExpenses" appearance="outline">
+                            <mat-label>Institute Other Expenses</mat-label>
+                            <input matInput type="number" formControlName="feeVoucher">
+                        </mat-form-field>
+
+                        <section class="example-section" [formGroup]="claimForm">
+                            <mat-hint>Fee Paid By: </mat-hint>
+                            <mat-checkbox formControlName="cash">Cash</mat-checkbox>
+                            <mat-checkbox formControlName="online">Online</mat-checkbox>
+                        </section>
+                    </div>
+
+                    <!-- Certification and Acknowledgement Section -->
+                    <div class="certification-section">
+                        <mat-card-title>Certification and Acknowledgement</mat-card-title>
+                        <p>I hereby certify that I filled out the form after reading and understanding it and providing
+                            the correct information as per my knowledge.</p>
+                        <p>I promise that I will honestly inform Tehreek e Ajar e Risalat if my income becomes
+                            sufficient and can bear educational expenses by myself in the future or if I/my child stops
+                            going to school/college.</p>
+                        <mat-hint>
+                            <mat-checkbox formControlName="certify">I agree with the Certification and
+                                Acknowledgement</mat-checkbox>
+                        </mat-hint>
+                    </div>
+
+                    <!-- Reference No. 1 Section -->
+                    <div class="reference1-section">
+                        <mat-card-title class="ref1">Reference No. 1</mat-card-title>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Name</mat-label>
+                            <input matInput type="text" formControlName="refOName">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>CNIC</mat-label>
+                            <input matInput type="text" formControlName="refOCnic">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Contact</mat-label>
+                            <input matInput type="text" formControlName="refOCont">
+                        </mat-form-field>
+
+                        <mat-form-field class="dateOfSubmission" appearance="outline">
+                            <mat-label>Date Of Submission</mat-label>
+                            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="pickerDateOfSubmission"
+                                formControlName="refODos">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matSuffix [for]="pickerDateOfSubmission"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerDateOfSubmission></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- Reference No. 2 Section -->
+                    <div class="reference2-section">
+                        <mat-card-title class="ref2">Reference No. 2</mat-card-title>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Name</mat-label>
+                            <input matInput type="text" formControlName="refTName">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>CNIC</mat-label>
+                            <input matInput type="text" formControlName="refTCnic">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Contact</mat-label>
+                            <input matInput type="text" formControlName="refTCont">
+                        </mat-form-field>
+
+                        <mat-form-field class="dateOfApproval" appearance="outline">
+                            <mat-label>Date Of Approval</mat-label>
+                            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="pickerDateOfApproval"
+                                formControlName="refTDoa">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matSuffix [for]="pickerDateOfApproval"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerDateOfApproval></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- Card Actions -->
+                    <mat-card-actions class="actions-section">
+                        <button type="submit" mat-raised-button color="primary">
+                            <mat-icon>save</mat-icon>Submit
                         </button>
-                    </mat-form-field>
-
-                    <mat-form-field class="voucher" appearance="outline">
-                        <mat-label>Fee Slip Voucher</mat-label>
-                        <input type="file" hidden #voucherFileInput formControlName="feeSlip" (change)="onFileChange($event, 'feeSlip')" accept=".pdf">
-                        <input type="text" matInput [value]="feeSlipFileName || claimForm.get('feeSlip')?.value?.name || ''" readonly>
-                        <button mat-icon-button color="primary" (click)="voucherFileInput.click()">
-                            <mat-icon>attach_file</mat-icon>
-                        </button>
-                    </mat-form-field>
-
-                    <mat-form-field class="monthlyFee" appearance="outline">
-                        <mat-label>Institute Monthly Fee</mat-label>
-                        <input matInput type="number" formControlName="iMonFee">
-                    </mat-form-field>
-
-                    <mat-form-field class="otherExpenses" appearance="outline">
-                        <mat-label>Institute Other Expenses</mat-label>
-                        <input matInput type="number" formControlName="feeVoucher">
-                    </mat-form-field>
-
-                    <section class="example-section" [formGroup]="claimForm">
-                        <mat-hint>Fee Paid By: </mat-hint>
-                        <mat-checkbox formControlName="cash">Cash</mat-checkbox>
-                        <mat-checkbox formControlName="online">Online</mat-checkbox>
-                    </section>
-                </div>
-
-                <!-- Certification and Acknowledgement Section -->
-                <div class="certification-section">
-                    <mat-card-title>Certification and Acknowledgement</mat-card-title>
-                    <p>I hereby certify that I filled out the form after reading and understanding it and providing the correct information as per my knowledge.</p>
-                    <p>I promise that I will honestly inform Tehreek e Ajar e Risalat if my income becomes sufficient and can bear educational expenses by myself in the future or if I/my child stops going to school/college.</p>
-                    <mat-hint>
-                        <mat-checkbox formControlName="certify">I agree with the Certification and Acknowledgement</mat-checkbox>
-                    </mat-hint>
-                </div>
-
-                <!-- Reference No. 1 Section -->
-                <div class="reference1-section">
-                    <mat-card-title class="ref1">Reference No. 1</mat-card-title>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Name</mat-label>
-                        <input matInput type="text" formControlName="refOName">
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>CNIC</mat-label>
-                        <input matInput type="text" formControlName="refOCnic">
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Contact</mat-label>
-                        <input matInput type="text" formControlName="refOCont">
-                    </mat-form-field>
-
-                    <mat-form-field class="dateOfSubmission" appearance="outline">
-                        <mat-label>Date Of Submission</mat-label>
-                        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="pickerDateOfSubmission" formControlName="refODos">
-                        <mat-hint>MM/DD/YYYY</mat-hint>
-                        <mat-datepicker-toggle matSuffix [for]="pickerDateOfSubmission"></mat-datepicker-toggle>
-                        <mat-datepicker #pickerDateOfSubmission></mat-datepicker>
-                    </mat-form-field>
-                </div>
-
-                <!-- Reference No. 2 Section -->
-                <div class="reference2-section">
-                    <mat-card-title class="ref2">Reference No. 2</mat-card-title>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Name</mat-label>
-                        <input matInput type="text" formControlName="refTName">
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>CNIC</mat-label>
-                        <input matInput type="text" formControlName="refTCnic">
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Contact</mat-label>
-                        <input matInput type="text" formControlName="refTCont">
-                    </mat-form-field>
-
-                    <mat-form-field class="dateOfApproval" appearance="outline">
-                        <mat-label>Date Of Approval</mat-label>
-                        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="pickerDateOfApproval" formControlName="refTDoa">
-                        <mat-hint>MM/DD/YYYY</mat-hint>
-                        <mat-datepicker-toggle matSuffix [for]="pickerDateOfApproval"></mat-datepicker-toggle>
-                        <mat-datepicker #pickerDateOfApproval></mat-datepicker>
-                    </mat-form-field>
-                </div>
-
-                <!-- Card Actions -->
-                <mat-card-actions class="actions-section">
-                    <button type="submit" mat-raised-button color="primary">
-                        <mat-icon>save</mat-icon>Submit
-                    </button>
-                    <button type="button" mat-raised-button color="warn">Close</button>
-                </mat-card-actions>
-            </form>
-        </mat-card-content>
-    </mat-card>
+                        <button type="button" mat-raised-button color="warn">Close</button>
+                    </mat-card-actions>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </mat-dialog-content>
 </body>
 
 </html>
+
+
+
+<!-- <mat-dialog-content>
+    <form [formGroup]="claimForm" (ngSubmit)="demandFund()">
+        <div class="modal-body" style="padding: 10px;">
+            <div class="basic-info" fxLayout="row">
+                <mat-form-field class="new-user-info-item" fxFlex="45">
+                    <mat-label>Candidate Name</mat-label>
+                    <input matInput type="text" formControlName="cName">
+                </mat-form-field>
+                <mat-form-field class="new-user-info-item" fxFlex="45">
+                    <mat-label>Caste</mat-label>
+                    <input matInput type="text" formControlName="cCaste">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content> -->

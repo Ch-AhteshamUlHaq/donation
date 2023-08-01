@@ -10,6 +10,17 @@
       "role": "",
       "isActive": true,
       "comment": ""
+    },
+    {
+      "id": "Shamoo",
+      "name": "Ahtesham",
+      "password": "colony",
+      "repassword": "colony",
+      "email": "Ch.AhteshamUlHaq@Gmail.com",
+      "gender": "male",
+      "role": "admin",
+      "isActive": true,
+      "comment": ""
     }
   ],
   "claimer": [
