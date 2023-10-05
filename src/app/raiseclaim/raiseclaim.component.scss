@@ -1,11 +1,11 @@
-// Import Angular Material styles and theming
+/* Import Angular Material styles and theming */
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 @import "@angular/material/theming";
 
-// Include Material core styles
+/* Include Material core styles */
 @include mat-core();
 
-// Define theme colors
+/* Define theme colors */
 $primary: mat-palette($mat-indigo);
 $accent: mat-palette($mat-amber);
 $warn: mat-palette($mat-red);
@@ -35,46 +35,45 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", Arial, sans-serif;
-  overflow-y: auto;
-  max-height: 50rem;
+  // overflow-y: auto;
+  max-height: 70rem;
 }
 
-// Mat-Card Styles
-
-mat-card {
-  width: 100%;
-  max-width: auto;
-  margin: 0 auto;
-  padding: 20px;
-  box-sizing: border-box;
+.claim-card {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 5px solid #868686;
+  border-radius: 4px;
+  margin: 10px;
+  padding-bottom: 5%;
 }
 
-mat-card-title {
-  font-size: 24px;
+.claim-card mat-card-title {
   font-weight: bold;
+  font-size: 24px;
   color: mat-color($black);
+  padding-bottom: 20px;
 }
 
-mat-card-subtitle {
+.claim-card mat-card-subtitle {
   font-size: 16px;
+  font-weight: normal;
+  text-align: center;
 }
-
-mat-divider {
-  margin: 10px 0;
-}
-
-// Avatar Styles
 
 .avatar-container {
-  position: relative;
   width: 150px;
   height: 150px;
-  margin: 7% auto;
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  // align-self: center;
+  position: relative;
 }
 
 .avatar {
@@ -88,7 +87,7 @@ mat-divider {
   bottom: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.7);
-  color: #fff;
+  color: mat-color($white);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,118 +101,193 @@ mat-divider {
   opacity: 1;
 }
 
-// Form Field Styles
-
-mat-form-field {
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-mat-hint {
-  font-size: 12px;
-}
-
-// Personal Information Section Styles
-
-.personal-info-section {
+.basic-info {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+  margin: 10px;
+  padding-top: 5%;
+  mat-form-field {
+    flex-grow: 4;
+  }
 }
 
-.religion,
-.dateOfBirth,
+.religion {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 10px;
+  mat-form-field {
+    flex-grow: 4;
+  }
+}
+
+.family-male {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 10px;
+  mat-form-field {
+    flex-grow: 4;
+  }
+}
+
+.family-female {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 10px;
+  mat-form-field {
+    flex-grow: 4;
+  }
+}
+
 .residentialAddress {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px;
+  display: flex;
+  gap: 20px;
+  margin: 10px;
+  mat-form-field {
+    flex-grow: 4;
+  }
 }
 
-
-
-// Guardian Information Section Styles
-
-.guardian-info-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px;
+.guardian-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 10px;
+  mat-form-field {
+    flex-grow: 4;
+  }
 }
 
-.fatherName,
-.fatherContact,
-.fatherCnic,
-.fatherJob,
-.fatherIncome,
-.sourcesOfIncome,
-.allIncomes {
-  grid-column: span 2;
+.guardian-job {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 10px;
+  mat-form-field {
+    flex-grow: 4;
+  }
 }
 
-// Institute Information Section Styles
-
-.institute-info-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px;
+.institute-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 10px;
+  mat-form-field {
+    flex-grow: 4;
+  }
 }
 
-.candidateClass,
-.candidateInstitute,
-.candyinstituteaddress,
-.candidateClass,
-.candidateInstitute {
-  grid-column: span 2;
+.candyinstituteaddress {
+  display: flex;
+  gap: 20px;
+  margin: 10px;
+  mat-form-field {
+    flex-grow: 4;
+  }
 }
 
-// File Upload Section Styles
+.institute-cont {
+  mat-hint {
+    // display: flex;
+    font-size: small;
+    font-weight: bold;
+    // align-items: center;
+    // justify-content: center;
+  }
+  display: flex;
+  gap: 20px;
+  margin: 10px;
+  mat-form-field {
+    flex-grow: 4;
+  }
+}
 
 .file-upload-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px;
+  display: flex;
+  gap: 20px;
+  margin: 10px;
+  mat-form-field {
+    flex-grow: 4;
+  }
 }
 
-.admissionForm,
-.voucher {
-  grid-column: span 2;
+.monthlyFee {
+  display: flex;
+  gap: 20px;
+  margin: 10px;
+  mat-form-field {
+    flex-grow: 4;
+  }
 }
 
-.example-section {
-  grid-column: span 2;
+.feePaid {
+  display: flex;
+  margin: 1%;
+  padding: 1%;
+  mat-form-field {
+    flex-grow: 4;
+  }
 }
-
-// Certification and Acknowledgement Section Styles
 
 .certification-section {
-  margin-top: 20px;
-  p {
-    margin: 10px 0;
-  }
+  display: flex;
+  flex-direction: column;
+  margin: 1%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 30px;
 }
 
-// Reference No. 1 Section Styles
-
-.reference1-section {
-  margin-top: 20px;
-  .ref1 {
-    margin-top: 10px;
-    font-size: 20px;
-  }
+.certification-section mat-card-title {
+  font-size: 23px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 2%;
+  color: mat-color($black);
 }
 
-// Reference No. 2 Section Styles
+.certification-section p {
+  margin: 10px 0;
+  border-radius: 3%;
+}
 
+.reference-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.reference1-section,
 .reference2-section {
-  margin-top: 20px;
-  .ref2 {
-    margin-top: 10px;
-    font-size: 20px;
+  mat-card-title {
+    padding: 1%;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: mat-color($black);
+  }
+
+  flex: 1;
+  max-width: calc(50% - 10px);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5%;
+  gap: 20px;
+  margin: 10px;
+
+  mat-form-field {
+    width: 100%;
   }
 }
-
-// Card Actions Styles
 
 .actions-section {
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  justify-content: flex-end;
+  gap: 20px;
+  margin: 20px;
 }

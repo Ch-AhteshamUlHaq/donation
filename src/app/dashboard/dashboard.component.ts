@@ -68,7 +68,7 @@ export class DashboardComponent implements DoCheck, AfterViewInit {
   }
   public dataticket: any[] = [];
   LoadUser() {
-    this.service.getAll().subscribe(res => {  // this.data i have added because it do require an argument
+    this.service.getAllClaimers().subscribe(res => {  // this.data i have added because it do require an argument
       this.dataticket = res;
       this.userlist = res;
       this.userlist = this.userlist.filter((i: any) => i.name == this.name)
@@ -130,7 +130,7 @@ export class DashboardComponent implements DoCheck, AfterViewInit {
       enterAnimationDuration: enteranimation,
       exitAnimationDuration: exitanimation,
       width: '60%',
-      // height:'30%',
+      height:'100%',
       data: {
         usercode: code
       }
@@ -142,7 +142,7 @@ export class DashboardComponent implements DoCheck, AfterViewInit {
   open = 0
   close = 0
   getStatus() {
-    this.service.getClaim().subscribe(res => {
+    this.service.getAllClaimers().subscribe(res => {
       res.filter((i: any) => {
         i.select;
         if (i.select == "Major issue") {

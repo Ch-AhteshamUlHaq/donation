@@ -59,20 +59,20 @@ export class AdminupdatepopupComponent implements OnInit {
       });
     });
   }
-  updateTicket() {
-    this.service.updateClaim(this.ticketform.value.id, this.ticketform.value).subscribe(res => {
-      this.ticketform.setValue({
-        id: this.editdata.id,
-        name: this.editdata.name,
-        select: this.editdata.select,
-        brief: this.editdata.brief,
-        file: this.editdata.file,
-        role: this.editdata.role,
-        isactive: this.editdata.isactive,
-        comment: this.editdata.comment
-      });
-      this.toastr.success('Updated successfully.');
-      this.dialogref.close();
-    });
-  }
+//   updateTicket() {
+//     this.service.updateClaim(this.ticketform.value.id, this.ticketform.value).subscribe(() => {
+//       this.ticketform.setValue({
+//         id: this.editdata.id,
+//         name: this.editdata.name,
+//         select: this.editdata.select,
+//         brief: this.editdata.brief,
+//         file: this.editdata.file,
+//         role: this.editdata.role,
+//         isactive: this.editdata.isactive,
+//         comment: this.editdata.comment
+//       });
+//       this.toastr.success('Updated successfully.');
+//       this.dialogref.close();
+//     });
+//   }
 }

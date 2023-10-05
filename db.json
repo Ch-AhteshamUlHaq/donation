@@ -24,6 +24,46 @@
     }
   ],
   "claimer": [
-    {}
+    {
+      "claimerId": 1,
+      "pImg": "sample-image.jpg",
+      "cName": "Sample Name",
+      "cCaste": "Sample Caste",
+      "cReligion": "Sample Religion",
+      "cSect": "Sample Sect",
+      "candidateDateOfBirth": "2000-01-01",
+      "cFamily": 4,
+      "cBrothers": 2,
+      "cBrojob": 2,
+      "cSisters": 2,
+      "cSisjob": 1,
+      "cResadd": "Sample Address",
+      "cFname": "Father's Name",
+      "cFcon": "Father's Contact",
+      "cFcnic": "1234567890123",
+      "cFjob": "Father's Job",
+      "cFincome": 50000,
+      "oIncome": 15000,
+      "allIncome": 65000,
+      "stuGrade": "A",
+      "sInstituteName": "Sample Institute",
+      "iAddress": "Institute Address",
+      "iAuthorityName": "Authority Name",
+      "iAuthorityEmail": "authority@example.com",
+      "iAuthorityCon": "Authority Contact",
+      "iMonFee": 5000,
+      "feeVoucher": 12345,
+      "cash": true,
+      "online": false,
+      "certify": true,
+      "refOName": "Reference 1 Name",
+      "refOCnic": "1234567890123",
+      "refOCont": "Reference 1 Contact",
+      "refODos": "2023-08-05",
+      "refTName": "Reference 2 Name",
+      "refTCnic": "1234567890123",
+      "refTCont": "Reference 2 Contact",
+      "refTDoa": "2023-08-05"
+    }
   ]
 }

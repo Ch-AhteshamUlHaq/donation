@@ -60,7 +60,7 @@ export class AdminDashboardComponent implements DoCheck, OnInit, AfterViewInit {
   // }
   public dataticket: any
   getAllTickets() {
-    this.service.getClaim()
+    this.service.getAllClaimers()
       .subscribe(res => {
         this.dataticket = res;
         this.dataSource = new MatTableDataSource(res);
@@ -106,7 +106,7 @@ export class AdminDashboardComponent implements DoCheck, OnInit, AfterViewInit {
   open = 0
   close = 0
   getStatus() {
-    this.service.getClaim().subscribe(res => {
+    this.service.getAllClaimers().subscribe(res => {
       res.filter((i: any) => {
         i.select;
         if (i.select == "Major issue") {

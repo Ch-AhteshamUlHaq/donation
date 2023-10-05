@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+import { User, Claimer } from '../interface/user';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
 
   proceedLogin() {
     if (this.loginForm.valid) {
-      this.service.getUserByCode(this.loginForm.value.id).subscribe((item: any) => {
+      const id = this.loginForm.value.id!;
+      this.service.getUserByCode(id).subscribe((item: any) => {
         this.result = item;
         if (this.result.password === this.loginForm.value.pass) {
           if (this.result.isActive) {

@@ -52,10 +52,11 @@ export class UpdatepopupComponent implements OnInit {
       });
     });
   }
-  UpdateUser() {
-    this.service.updateClaim(this.registerform.value.name, this.registerform.value).subscribe(res => {
-      this.toastr.success('Updated successfully.');
-      this.dialogref.close();
-    });
-  }
+  // UpdateUser() {
+  //   const name = this.registerform.value.name!;
+  //   this.service.updateClaim(name, this.registerform.value).subscribe(res => {
+  //     this.toastr.success('Updated successfully.');
+  //     this.dialogref.close();
+  //   });
+  // }
 }

@@ -33,7 +33,7 @@ export class RaiseclaimComponent implements OnInit {
     this.setupClaimForm();
   }
 
-  claimForm: FormGroup = new FormGroup({}); // Define the type explicitly
+  claimForm: FormGroup = new FormGroup({});
 
   setupClaimForm(): void {
     this.claimForm = this.builder.group({
@@ -48,7 +48,7 @@ export class RaiseclaimComponent implements OnInit {
       cBrojob: [null, [Validators.required]],
       cSisters: [null, [Validators.required]],
       cSisjob: [null, [Validators.required]],
-      cResadd: [null, [Validators.required, Validators.minLength(7), Validators.maxLength(35)]],
+      cResadd: [null, [Validators.required, Validators.minLength(7), Validators.maxLength(139)]],
       cFname: [null, [Validators.required]],
       cFcon: [null, [Validators.required]],
       cFcnic: [null, [Validators.required]],
@@ -101,18 +101,6 @@ export class RaiseclaimComponent implements OnInit {
     });
   }
 
-  demandFund() {
-    if (this.claimForm.valid) {
-      this.service.postClaim(this.claimForm.value)
-        .subscribe(res => {
-          // console.log(res);
-          this.toastr.success('Ticket added successfully');
-        }, err => {
-          this.toastr.error('Error while raising ticket');
-        });
-    }
-  }
-
   onFileChange(event: any, controlName: string) {
     const file = event.target.files?.[0];
     if (file) {
@@ -125,36 +113,80 @@ export class RaiseclaimComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  demandFund() {
     if (this.claimForm.valid) {
-      const formData = new FormData();
-
-      // Append the profile picture if it exists
-      const profilePictureFile = this.claimForm.get('pImg')?.value;
-      if (profilePictureFile) {
-        formData.append('pImg', profilePictureFile);
-      }
-
-      // Append the admissionForm if it exists
-      const admissionFormFile = this.claimForm.get('uploadAdmissionnF')?.value;
-      if (admissionFormFile) {
-        formData.append('admissionForm', admissionFormFile);
-      }
-
-      // Append the voucher if it exists
-      const voucherFile = this.claimForm.get('feeSlip')?.value;
-      if (voucherFile) {
-        formData.append('voucher', voucherFile);
-      }
-
-      // Append other form data
-      formData.append('cName', this.claimForm.get('cName')?.value);
-      formData.append('cCaste', this.claimForm.get('cCaste')?.value);
-      // ... Append other form controls
-
-      // Now you can use the formData object to send the file data and other form data to the server using an HTTP request.
-      // For example:
-      // this.service.postFormData(formData).subscribe(...);
+      this.service.postClaim(this.prepareFormData()).subscribe({
+        next: (val: any) => {
+          this.toastr.success('Form data submitted successfully');
+          this.claimForm.reset();
+          this.profilePicture = null;
+          this.admissionFileName = null;
+          this.feeSlipFileName = null;
+        },
+        error: (err: any) => {
+          console.error(err);
+        }
+      });
+    } else {
+      this.toastr.error('Please fill in all required fields');
     }
+  }
+
+  prepareFormData(): FormData {
+  const claimData = new FormData();
+  
+    const profilePictureFile = this.claimForm.get('pImg')?.value;
+    if (profilePictureFile) {
+      claimData.append('pImg', profilePictureFile);
+    }
+  
+    const admissionFormFile = this.claimForm.get('uploadAdmissionnF')?.value;
+    if (admissionFormFile) {
+      claimData.append('admissionForm', admissionFormFile);
+    }
+  
+    const voucherFile = this.claimForm.get('feeSlip')?.value;
+    if (voucherFile) {
+      claimData.append('voucher', voucherFile);
+    }
+    claimData.append('cName', this.claimForm.get('cName')?.value);
+    claimData.append('cCaste', this.claimForm.get('cCaste')?.value);
+    claimData.append('cReligion', this.claimForm.get('cReligion')?.value);
+    claimData.append('candidateDateOfBirth', this.claimForm.get('candidateDateOfBirth')?.value);
+    claimData.append('cSect', this.claimForm.get('cSect')?.value);
+    claimData.append('cFamily', this.claimForm.get('cFamily')?.value);
+    claimData.append('cBrothers', this.claimForm.get('cBrothers')?.value);
+    claimData.append('cBrojob', this.claimForm.get('cBrojob')?.value);
+    claimData.append('cSisters', this.claimForm.get('cSisters')?.value);
+    claimData.append('cSisjob', this.claimForm.get('cSisjob')?.value);
+    claimData.append('cResadd', this.claimForm.get('cResadd')?.value);
+    claimData.append('cFname', this.claimForm.get('cFname')?.value);
+    claimData.append('cFcon', this.claimForm.get('cFcon')?.value);
+    claimData.append('cFcnic', this.claimForm.get('cFcnic')?.value);
+    claimData.append('cFjob', this.claimForm.get('cFjob')?.value);
+    claimData.append('cFincome', this.claimForm.get('cFincome')?.value);
+    claimData.append('oIncome', this.claimForm.get('oIncome')?.value);
+    claimData.append('allIncome', this.claimForm.get('allIncome')?.value);
+    claimData.append('stuGrade', this.claimForm.get('stuGrade')?.value);
+    claimData.append('sInstituteName', this.claimForm.get('sInstituteName')?.value);
+    claimData.append('iAddress', this.claimForm.get('iAddress')?.value);
+    claimData.append('iAuthorityName', this.claimForm.get('iAuthorityName')?.value);
+    claimData.append('iAuthorityEmail', this.claimForm.get('iAuthorityEmail')?.value);
+    claimData.append('iAuthorityCon', this.claimForm.get('iAuthorityCon')?.value);
+    claimData.append('iMonFee', this.claimForm.get('iMonFee')?.value);
+    claimData.append('feeVoucher', this.claimForm.get('feeVoucher')?.value);
+    claimData.append('cash', this.claimForm.get('cash')?.value);
+    claimData.append('online', this.claimForm.get('online')?.value);
+    claimData.append('certify', this.claimForm.get('certify')?.value);
+    claimData.append('refOName', this.claimForm.get('refOName')?.value);
+    claimData.append('refOCnic', this.claimForm.get('refOCnic')?.value);
+    claimData.append('refOCont', this.claimForm.get('refOCont')?.value);
+    claimData.append('refODos', this.claimForm.get('refODos')?.value);
+    claimData.append('refTName', this.claimForm.get('refTName')?.value);
+    claimData.append('refTCnic', this.claimForm.get('refTCnic')?.value);
+    claimData.append('refTCont', this.claimForm.get('refTCont')?.value);
+    claimData.append('refTDoa', this.claimForm.get('refTDoa')?.value);
+
+    return claimData;
   }
 }

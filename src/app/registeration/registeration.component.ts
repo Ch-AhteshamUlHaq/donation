@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../service/auth.service';
+import { User, Claimer } from '../interface/user';
 
 @Component({
   selector: 'app-registeration',
@@ -25,12 +26,13 @@ export class RegisterationComponent implements OnInit {
   ngOnInit(): void { }
 
   registerForm: FormGroup = this.builder.group({
-    id: ['', [Validators.required, Validators.minLength(5)], Validators.maxLength(20)],
-    name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
-    password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
-    repassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
+  
+    id: [null, [Validators.required, Validators.minLength(5)], Validators.maxLength(20)],
+    name: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
+    password: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
+    repassword: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
     email: [
-      '',
+      null,
       [
         Validators.required,
         Validators.maxLength(256),
@@ -39,7 +41,7 @@ export class RegisterationComponent implements OnInit {
         ),
       ],
     ],
-    gender: ['male'],
+    gender: ['male', [Validators.required]],
     role: [''],
     isActive: [false],
     comment: [''],

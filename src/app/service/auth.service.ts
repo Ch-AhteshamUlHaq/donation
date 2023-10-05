@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { User, Claimer } from '../interface/user';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
   getTicket() {
     throw new Error('Method not implemented.');
   }
@@ -13,51 +16,51 @@ export class AuthService {
     throw new Error('Method not implemented.');
   }
 
-  constructor(private http: HttpClient) { }
+ constructor(private http: HttpClient) { }
 
-  apiURL = "http://localhost:3000/user";
+  private apiURL = "http://localhost:3000/user";
 
-  registerUser(inputData: any) {
-    return this.http.post(this.apiURL, inputData);
+  registerUser(inputData: User): Observable<any> {
+    return this.http.post<any>(this.apiURL, inputData);
   }
 
-  getUserByCode(id: any) {
-    return this.http.get(this.apiURL + '/' + id);
+  getUserByCode(id: string): Observable<User> {
+    return this.http.get<User>(`${this.apiURL}/${id}`);
   }
 
-  getClaimerByCode(id: any) {
-    return this.http.get("http://localhost:3000/claimer" + '/' + id);
+  getClaimerByCode(id: string): Observable<Claimer> {
+    return this.http.get<Claimer>(`http://localhost:3000/claimer/${id}`);
   }
 
-  getAll() {
-    return this.http.get<any>("http://localhost:3000/claimer");
+  getAllClaimers(): Observable<Claimer[]> {
+    return this.http.get<Claimer[]>("http://localhost:3000/claimer");
   }
 
-  getRole() {
-    return sessionStorage.getItem('role') != null ? sessionStorage.getItem('role')?.toString() : '';
+  getRole(): string {
+    return sessionStorage.getItem('role') || '';
   }
 
-  postClaim(data: any) {
+  postClaim(data: FormData): Observable<any> {
     return this.http.post<any>("http://localhost:3000/claimer/", data);
   }
 
-  getClaim() {
-    return this.http.get<any>("http://localhost:3000/claimer");
+  // getClaims(): Observable<Claimer[]> {
+  //   return this.http.get<Claimer[]>("http://localhost:3000/claimer");
+  // }
+
+  updateClaim(id: string, data: Claimer): Observable<any> {
+    return this.http.put(`http://localhost:3000/claimer/${id}`, data);
   }
 
-  updateClaim(id: any, data: any) {
-    return this.http.put("http://localhost:3000/claimer" + '/' + id, data);
+  updateUser(id: string, inputData: User): Observable<any> {
+    return this.http.put(`${this.apiURL}/${id}`, inputData);
   }
 
-  updateUser(id: any, inputData: any) {
-    return this.http.put(this.apiURL + '/' + id, inputData);
+  isLoggedIn(): boolean {
+    return sessionStorage.getItem('id') !== null;
   }
 
-  isLoggedIn() {
-    return sessionStorage.getItem('id') != null;
-  }
-
-  getUserRole(){
+  getUserRole(): Observable<any> {
     return this.http.get('http://localhost:3000/role');
   }
 }
